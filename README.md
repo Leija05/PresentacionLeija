@@ -1,2 +1,0 @@
-# PresentacionLeija
-Pagina Sobre mi
