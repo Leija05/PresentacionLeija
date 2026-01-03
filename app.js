@@ -11,6 +11,7 @@ modal.addEventListener("click", (e) => {
 
 function openModal(type) {
     clickSound.play();
+    clickSound.currentTime = 0;
     let content = "";
 
     if (type === "juegos") {
@@ -74,9 +75,12 @@ function openModal(type) {
         content = `
       <h3>📚 Estudios</h3>
       <p>
+      Graduado como Técnico en Programación en el año 2023 de el Bachillerato CBTis 234.
+      </p>
+      <p>
         Actualmente estoy estudiando la carrera de:
       </p>
-      <p><strong>Ingeniería en Sistemas / Programación</strong></p>
+      <p><strong>Ingeniería en Sistemas Computacionales / Programación</strong></p>
 
       <p>
         📍 Institución: <strong>Intituto Tecnologico Nacional De Nuevo Laredo</strong><br>
@@ -87,18 +91,64 @@ function openModal(type) {
         Me estoy formando en áreas como desarrollo web,
         programación orientada a objetos y lógica de programación.
       </p>
+      <p>  
+        Busco desarrollarme como programador, adquirir experiencia real
+        en proyectos y eventualmente especializarme en desarrollo de
+        aplicaciones de escritorio o móviles.
+      </p>
     `;
     }
 
     if (type === "timeline") {
         content = `
-        <h3>⏳ Mi camino</h3>
         <div class="timeline">
-            <p>📌 2020 - Inicio en Programación en Bachillerato</p>
-            <p>📌 2023 - Graduado de Tecnico en Programacion con Habilidades para Crear Paginas web, Apps moviles y de escritorio y programar con objetos, 
-                    ingreso al Tecnologico como ingeniero en sistemas computacionales reforzando mis conocimientos en Html, Css, Js, C#, Estructuras de datos, Bases de datos</p>
-            <p>🚀 Futuro - Desarrollador Profesional de Apps Moviles o Escritorio o posible Mantenimiento de Sistemas</p>
-        </div>
+
+    <div class="timeline-item">
+      <span class="timeline-year">2020</span>
+      <div class="timeline-content">
+        <h3>Inicio en Programación</h3>
+        <p>
+          Primer contacto con la programación durante el bachillerato.
+          Aprendí lógica básica y fundamentos del desarrollo.
+        </p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <span class="timeline-year">2023</span>
+      <div class="timeline-content">
+        <h3>Técnico en Programación</h3>
+        <p>
+          Graduado como Técnico en Programación con habilidades para crear
+          páginas web, aplicaciones móviles y de escritorio.
+        </p>
+        <p>
+          Ingreso al Tecnológico como Ingeniero en Sistemas Computacionales,
+          reforzando conocimientos en HTML, CSS, JavaScript, C#, estructuras
+          de datos y bases de datos.
+        </p>
+      </div>
+    </div>
+
+    <div class="timeline-item present">
+  <span class="timeline-year">Presente</span>
+  <div class="timeline-content">
+    <h3>🎓 Ingeniería en Sistemas Computacionales</h3>
+    <p>
+      Actualmente cursando el <strong>6to semestre</strong> de la carrera,
+      fortaleciendo conocimientos teóricos y prácticos en áreas clave.
+    </p>
+    <ul>
+      <li>Lenguajes y Autómatas</li>
+      <li>Redes Computacionales</li>
+      <li>Taller de Sistemas Operativos</li>
+      <li>Lenguaje de Interfaz</li>
+    </ul>
+  </div>
+</div>
+
+
+  </div>
       `;
     }
 
@@ -205,55 +255,55 @@ function openModal(type) {
 
     if (type === "C#") {
         content = `
-        <h3>C#</h3>
-        <p>     
-          Lenguaje de programación orientado a objetos.
-          Se usa para crear aplicaciones de escritorio,
-          web y videojuegos con la plataforma .NET.
-        </p>
-        <h3>Porcentaje que Domino</h3>
-        <div class="bar"><div class="progress" style="width:80%"></div></div>
+        <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-plain.svg" alt="C#">
+            <h3>C#</h3>
+            <p>Lenguaje de programación orientado a objetos. Se usa para crear aplicaciones de escritorio, web y videojuegos con la plataforma .NET.</p>
+            <h4>Dominio: 80%</h4>
+            <div class="bar"><div class="progress" style="--progress-width:80%; width:80%"></div></div>
+        </div>
       `;
     }
 
     if (type === "html") {
         content = `
-        <h3>HTML</h3>
-        <p>
-          Es el lenguaje que estructura una página web.
-          Define títulos, textos, imágenes y secciones.
-        </p>
-        <h3>Porcentaje que Domino</h3>
-        <div class="bar"><div class="progress" style="width:60%"></div></div>
+        <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg" alt="HTML" width="50">
+            <h3>HTML</h3>
+            <p>Es el lenguaje que estructura una página web.Define títulos, textos, imágenes y secciones.</p>
+            <h3>Domino: 70%</h3>
+            <div class="bar"><div class="progress" style="--progress-width:70%; width:70%"></div></div>
+        </div>
       `;
     }
 
     if (type === "css") {
         content = `
-        <h3>CSS</h3>
-        <p>
-          Se encarga del diseño: colores, tamaños,
-          animaciones y estilos visuales.
-        </p>
-        <h3>Porcentaje que Domino</h3>
-        <div class="bar"><div class="progress" style="width:50%"></div></div>
+        <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" alt="CSS" width="50">
+            <h3>CSS</h3>
+            <p>Se encarga del diseño: colores, tamaños, animaciones y estilos visuales.</p>
+            <h3>Domino: 50%</h3>
+            <div class="bar"><div class="progress" style="--progress-width:50%; width:50%"></div></div>
+        </div>
       `;
     }
 
     if (type === "js") {
         content = `
-        <h3>JavaScript</h3>
-        <p>
-          Hace la página interactiva: botones,
-          animaciones, ventanas y lógica.
-        </p>
-        <h3>Porcentaje que Domino</h3>
-        <div class="bar"><div class="progress" style="width:40%"></div></div>
+        <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" alt="JavaScript" width="50">
+            <h3>JavaScript</h3>
+            <p>Hace la página interactiva: botones, animaciones, ventanas y lógica.</p>
+            <h3>Domino: 40%</h3>
+            <div class="bar"><div class="progress" style="--progress-width:40%; width:40%"></div></div>
+        </div>
       `;
     }
 
     modalContent.innerHTML = content + `<button class="close" onclick="closeModal()">Cerrar</button>`;
     modal.style.display = "flex";
+    animateModal();
 }
 
 function showGame(game) {
@@ -329,6 +379,7 @@ function showGame(game) {
     <button class="close" onclick="openModal('juegos')">Volver</button>
   `;
 }
+
 const clickSound = new Audio(
     "https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3"
 );
@@ -446,8 +497,8 @@ async function loadDiscordProfile() {
                         </div>
                     </div>
                 </div>
-                ${spotifyHTML}
                 ${activityHTML}
+                ${spotifyHTML}
             </div>
         `;
     } catch (e) {
@@ -496,4 +547,18 @@ function openInstagram() {
         window.open("https://www.instagram.com/leija.chi/", "_blank");
         card.classList.remove("ig-click");
     }, 180);
+}
+window.addEventListener("load", updateVisitCounter);
+
+// Llamar al cargar la página
+window.addEventListener('load', updateVisitCounter);
+// Animaciones para modal
+function animateModal() {
+    modalContent.style.opacity = 0;
+    modalContent.style.transform = "scale(0.9)";
+    setTimeout(() => {
+        modalContent.style.transition = "all 0.3s ease";
+        modalContent.style.opacity = 1;
+        modalContent.style.transform = "scale(1)";
+    }, 10);
 }
