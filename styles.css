@@ -1,0 +1,1132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    scroll-behavior: smooth;
+}
+
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 3rem;
+}
+
+section {
+    padding: 80px 10%;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    border-left: 5px solid #00eaff;
+    padding-left: 15px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+button {
+    padding: 20px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: transform 0.3s, background 0.3s;
+}
+
+button:hover {
+    transform: translateY(-8px);
+    background: rgba(0, 234, 255, 0.3);
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.modal-content {
+    background: #1b2d38;
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 650px;
+    width: 95%;
+    text-align: center;
+}
+
+.modal-content p {
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+
+
+
+.close {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #00eaff;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+}
+
+@keyframes pop {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+audio {
+    width: 100%;
+    margin: 10px 0 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.game-card {
+    background: #0f2027;
+    border-radius: 15px;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 234, 255, 0.5);
+}
+
+.game-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.download-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: #00eaff;
+    color: black;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.download-btn:hover {
+    transform: scale(1.05);
+}
+
+.skill {
+    margin: 15px 0;
+    text-align: left;
+}
+
+.skill span {
+    font-weight: bold;
+}
+
+.bar {
+    background: #203a43;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 15px;
+    background: #00eaff;
+}
+
+.timeline p {
+    margin: 10px 0;
+}
+
+/* ============================= */
+/* 🤍 MODO CLARO BLANCO + GRIS */
+/* ============================= */
+
+.light-theme {
+    background: radial-gradient(circle at top left,
+            #ffffff,
+            #f2f4f6,
+            #e6eaee);
+    color: #1e293b;
+}
+
+/* Header */
+.light-theme header {
+    background: radial-gradient(circle at top,
+            #ffffff,
+            #f1f3f5);
+}
+
+/* Títulos */
+.light-theme h1 {
+    color: #0f172a;
+}
+
+.light-theme h2,
+.light-theme h3 {
+    color: #1e293b;
+}
+
+/* Secciones tipo tarjeta */
+.light-theme section {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 30px;
+    margin: 50px auto;
+    backdrop-filter: blur(10px);
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.08),
+        0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+/* Botones */
+.light-theme button {
+    background: linear-gradient(135deg, #ffffff, #f1f3f5);
+    color: #0f172a;
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.light-theme button:hover {
+    background: linear-gradient(135deg, #00eaff, #9df6ff);
+    color: #000;
+}
+
+/* Modal */
+.light-theme .modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    color: #1e293b;
+    border-radius: 25px;
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Juegos */
+.light-theme .game-card {
+    background: linear-gradient(135deg, #ffffff, #f3f4f6);
+    box-shadow:
+        0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Footer */
+.light-theme footer {
+    background: linear-gradient(135deg, #ffffff, #f1f3f5);
+    color: #334155;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.08);
+}
+
+body,
+header,
+section,
+button,
+footer,
+.modal-content {
+    transition: background 0.45s ease, color 0.45s ease, box-shadow 0.45s ease;
+}
+
+.fade-in {
+    animation: fade 0.6s ease;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    section {
+        padding: 60px 5%;
+    }
+
+    .buttons {
+        grid-template-columns: 1fr;
+    }
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-radius: 16px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+/* Instagram */
+.social-btn.instagram {
+    background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+}
+
+.social-btn:hover {
+    transform: scale(1.07);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.social-btn img {
+    width: 26px;
+    height: 26px;
+}
+
+/* ======================= */
+/* 🟣 DISCORD STATUS */
+/* ======================= */
+
+.discord-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.status-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+}
+
+/* Estados */
+.online {
+    background: #22c55e;
+}
+
+.idle {
+    background: #facc15;
+}
+
+.dnd {
+    background: #ef4444;
+}
+
+.offline {
+    background: #6b7280;
+}
+
+/* Botón copiar */
+.copy-btn {
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #5865f2, #4752c4);
+    color: white;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.copy-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(88, 101, 242, 0.5);
+}
+
+.discord-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.discord-profile img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #5865f2;
+}
+
+/* ======================= */
+/* 📸 INSTAGRAM PROFILE */
+/* ======================= */
+
+.instagram-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 15px;
+    border-radius: 18px;
+    margin: 15px 0;
+}
+
+.instagram-profile img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #dd2a7b;
+}
+
+.instagram-profile strong {
+    font-size: 1.1rem;
+}
+
+.instagram-profile p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.discord-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.discord-profile img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+}
+
+.discord-status-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.discord-activity {
+    margin-top: 6px;
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+.discord-profile.ultra {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    animation: pop 0.4s ease;
+}
+
+.discord-profile .avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.discord-status-text {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+.activity-box,
+.spotify-box {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    align-items: center;
+}
+
+.activity-img,
+.spotify-box img {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.discord-activity {
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+.since {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== DISCORD CARD ===== */
+.discord-card {
+    border-radius: 20px;
+    padding: 18px;
+    margin-top: 15px;
+    background: rgba(255, 255, 255, 0.08);
+    animation: pop 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* BORDE ANIMADO */
+.discord-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    border-radius: 22px;
+
+    background: linear-gradient(120deg,
+            var(--border-color),
+            transparent,
+            var(--border-color));
+
+    animation: borderMove 3s linear infinite;
+
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+
+@keyframes borderMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+.discord-card {
+    position: relative;
+    margin-top: 15px;
+    padding: 18px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+/* BORDE ANIMADO */
+.discord-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    border-radius: 22px;
+    background: linear-gradient(120deg,
+            transparent,
+            #00eaff,
+            transparent);
+    animation: borderMove 3s linear infinite;
+
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+@keyframes borderMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+.spotify-box {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+    padding: 10px;
+    border-radius: 14px;
+    background: rgba(30, 215, 96, 0.15);
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.spotify-box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 18px rgba(30, 215, 96, 0.6);
+}
+
+.spotify-box img {
+    width: 55px;
+    height: 55px;
+    border-radius: 10px;
+}
+
+.discord-card {
+    --border-color: #6b7280;
+    /* offline por defecto */
+}
+
+/* COLORES SEGÚN ESTADO */
+.discord-card.online {
+    --border-color: #22c55e;
+}
+
+.discord-card.idle {
+    --border-color: #facc15;
+}
+
+.discord-card.dnd {
+    --border-color: #ef4444;
+}
+
+.discord-card.offline {
+    --border-color: #6b7280;
+}
+
+.spotify-progress {
+    margin-top: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.spotify-progress-bar {
+    height: 100%;
+    background: #1db954;
+    transition: width 0.5s linear;
+}
+
+.discord-card.online::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 26px;
+    background: rgba(34, 197, 94, 0.4);
+    animation: pulse 2s infinite;
+    z-index: -1;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+
+    70% {
+        opacity: 0;
+        transform: scale(1.12);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.spotify-box {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+    padding: 14px;
+    border-radius: 18px;
+    text-decoration: none;
+    color: white;
+    background: rgba(30, 215, 96, 0.18);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.spotify-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--album-url);
+    background-size: cover;
+    background-position: center;
+    filter: blur(20px) brightness(0.6);
+    z-index: 0;
+}
+
+.spotify-box>* {
+    position: relative;
+    z-index: 1;
+}
+
+.spotify-box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 22px rgba(30, 215, 96, 0.6);
+}
+
+.spotify-info {
+    flex: 1;
+}
+
+.spotify-time {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    opacity: 0.85;
+    margin: 4px 0;
+}
+
+.spotify-progress {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.spotify-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #1ed760, #9cffc8);
+    transition: width 1s linear;
+}
+
+/* ===== SPOTIFY BEAT EFFECT ===== */
+.spotify-box.beat::before {
+    content: "";
+    position: absolute;
+    inset: -30%;
+    background-image: var(--album-url);
+    background-size: cover;
+    background-position: center;
+    filter: blur(35px) brightness(0.65) saturate(1.4);
+    animation: beatPulse var(--beat-speed) ease-in-out infinite;
+    z-index: 0;
+}
+
+@keyframes beatPulse {
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.6;
+    }
+
+    25% {
+        transform: scale(1.08) rotate(0.4deg);
+        opacity: 0.85;
+    }
+
+    50% {
+        transform: scale(1.15) rotate(-0.4deg);
+        opacity: 1;
+    }
+
+    75% {
+        transform: scale(1.08) rotate(0.3deg);
+        opacity: 0.85;
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.6;
+    }
+}
+
+.spotify-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #1ed760, #9cffc8);
+    animation: barPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes barPulse {
+    0% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(1.3);
+    }
+
+    100% {
+        filter: brightness(1);
+    }
+}
+
+/* ======================= */
+/* 🌈 INSTAGRAM PREMIUM */
+/* ======================= */
+
+.ig-premium {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 22px;
+    border-radius: 22px;
+    background: linear-gradient(135deg,
+            rgba(245, 133, 41, 0.15),
+            rgba(221, 42, 123, 0.15),
+            rgba(129, 52, 175, 0.15));
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.ig-premium:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 30px rgba(221, 42, 123, 0.45);
+}
+
+/* 🌟 BORDE ANIMADO */
+.ig-premium::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    border-radius: 22px;
+    background: linear-gradient(120deg,
+            #f58529,
+            #dd2a7b,
+            #8134af,
+            #f58529);
+    background-size: 300% 300%;
+    animation: igBorder 4s linear infinite;
+
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+@keyframes igBorder {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+/* 📸 FOTO CON ARO */
+.ig-ring {
+    width: 72px;
+    height: 72px;
+    padding: 3px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,
+            #f58529,
+            #dd2a7b,
+            #8134af);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ig-ring img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #000;
+}
+
+/* 🧾 TEXTO */
+.ig-info strong {
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+.ig-info p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* 💥 PULSO SUAVE */
+.ig-ring {
+    animation: igPulse 2.8s infinite;
+}
+
+@keyframes igPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(221, 42, 123, 0.6);
+    }
+
+    70% {
+        box-shadow: 0 0 0 14px rgba(221, 42, 123, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(221, 42, 123, 0);
+    }
+}
+
+/* CLICK EFFECT */
+.ig-click {
+    transform: scale(0.96);
+}
+
+/* STORY FEEL */
+.ig-premium {
+    transition: transform 0.15s ease, box-shadow 0.3s ease;
+}
+
+/* MÁS BRILLO AL HOVER */
+.ig-premium:hover .ig-ring {
+    filter: brightness(1.15);
+}
+
+/* ======================= */
+/* 🟣 DISCORD PREMIUM CARD */
+/* ======================= */
+
+.discord-premium {
+    position: relative;
+    border-radius: 22px;
+    padding: 20px;
+    background: linear-gradient(135deg,
+            rgba(88, 101, 242, 0.18),
+            rgba(88, 101, 242, 0.08));
+    overflow: hidden;
+    animation: pop 0.4s ease;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.discord-premium:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 30px rgba(88, 101, 242, 0.45);
+}
+
+/* 🌈 BORDE ANIMADO (IG STYLE) */
+.discord-premium::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    border-radius: 22px;
+    background: linear-gradient(120deg,
+            transparent,
+            var(--discord-glow),
+            transparent);
+    background-size: 300% 300%;
+    animation: discordBorder 3s linear infinite;
+
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+@keyframes discordBorder {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+/* 🎨 COLORES SEGÚN ESTADO */
+.discord-premium.online {
+    --discord-glow: #22c55e;
+}
+
+.discord-premium.idle {
+    --discord-glow: #facc15;
+}
+
+.discord-premium.dnd {
+    --discord-glow: #ef4444;
+}
+
+.discord-premium.offline {
+    --discord-glow: #6b7280;
+}
+
+/* 💫 PULSO DEL AVATAR */
+.discord-premium .avatar {
+    border-radius: 50%;
+    animation: discordPulse 2.8s infinite;
+}
+
+@keyframes discordPulse {
+    0% {
+        box-shadow: 0 0 0 0 var(--discord-glow);
+    }
+
+    70% {
+        box-shadow: 0 0 0 14px transparent;
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 transparent;
+    }
+}
+
+/* 🎵 SPOTIFY HEREDA ESTILO */
+.discord-premium .spotify-box {
+    margin-top: 14px;
+    border-radius: 16px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.discord-premium .spotify-box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 18px rgba(30, 215, 96, 0.6);
+}
+
+/* 🎮 ACTIVIDAD */
+.discord-premium .activity-box {
+    margin-top: 12px;
+    border-radius: 16px;
+}
+/* =============================== */
+/* 📱 MOBILE FIRST OPTIMIZATION */
+/* =============================== */
+
+@media (max-width: 768px) {
+
+  header {
+    padding: 40px 20px;
+    height: auto;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header p {
+    font-size: 1rem;
+    opacity: 0.85;
+  }
+
+  section {
+    padding: 50px 20px;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  .buttons {
+    grid-template-columns: 1fr;
+  }
+
+  button {
+    padding: 14px;
+    font-size: 1rem;
+  }
+
+  /* MODAL */
+  .modal-content {
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 20px;
+  }
+
+  /* INSTAGRAM CARD */
+  .ig-premium {
+    flex-direction: row;
+    padding: 14px;
+  }
+
+  .ig-ring {
+    width: 60px;
+    height: 60px;
+  }
+
+  .ig-info strong {
+    font-size: 1rem;
+  }
+
+  /* DISCORD */
+  .discord-profile {
+    flex-direction: row;
+  }
+
+  .discord-profile img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .discord-status-text {
+    font-size: 0.85rem;
+  }
+
+  /* SPOTIFY */
+  .spotify-box {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .spotify-box img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .spotify-info strong {
+    font-size: 0.9rem;
+  }
+
+  .spotify-info p {
+    font-size: 0.8rem;
+  }
+
+  .spotify-time {
+    font-size: 0.75rem;
+  }
+
+}
