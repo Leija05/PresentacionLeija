@@ -560,23 +560,36 @@ function animateModal() {
     }, 10);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const counterEl = document.getElementById("visitCount");
   if (!counterEl) return;
 
-  fetch("https://api.counterapi.dev/v2/leija05s-workspace/first-counter-2375/up", {
-    method: "POST"
-  })
-    .then(res => res.json())
-    .then(data => {
-      console.log("Respuesta CounterAPI:", data);
-      counterEl.textContent = data.count;
-    })
-    .catch(err => {
-      console.error("Error contador:", err);
-      counterEl.textContent = "—";
-    });
+  const BASE = "https://api.countapi.xyz";
+  const KEY = "leija05.github.io/visits";
+
+  try {
+    // 1️⃣ Intentar incrementar
+    let res = await fetch(`${BASE}/hit/${KEY}`, { cache: "no-store" });
+
+    // 2️⃣ Si falla, solo leer
+    if (!res.ok) {
+      res = await fetch(`${BASE}/get/${KEY}`, { cache: "no-store" });
+    }
+
+    const data = await res.json();
+
+    counterEl.textContent = data.value ?? 0;
+
+    // animación
+    counterEl.classList.add("bump");
+    setTimeout(() => counterEl.classList.remove("bump"), 300);
+  } catch (err) {
+    console.error("Error contador:", err);
+    counterEl.textContent = "—";
+  }
 });
+
+
 
 
 
