@@ -559,38 +559,22 @@ function animateModal() {
         modalContent.style.transform = "scale(1)";
     }, 10);
 }
-let lastVisits = 0;
+const counterEl = document.getElementById("visitCount");
 
-window.addEventListener("load", () => {
-  // Espera a que GoatCounter cargue
-  const interval = setInterval(() => {
-    if (window.goatcounter && goatcounter.count) {
-      const visits = goatcounter.count;
+fetch("https://counterapi.dev/api/hectorleija/visitas")
+  .then(res => res.json())
+  .then(data => {
+    const count = data.count;
 
-      const number = document.getElementById("visitNumber");
-      if (!number) return;
+    counterEl.textContent = count;
 
-      // Primera carga
-      if (lastVisits === 0) {
-        number.textContent = visits;
-        lastVisits = visits;
-        clearInterval(interval);
-        return;
-      }
+    // animación cuando cambia
+    counterEl.classList.add("bump");
+    setTimeout(() => counterEl.classList.remove("bump"), 300);
+  })
+  .catch(err => {
+    console.error("Error contador:", err);
+    counterEl.textContent = "—";
+  });
 
-      // Si aumentó
-      if (visits > lastVisits) {
-        number.textContent = visits;
-        number.classList.add("bump");
 
-        setTimeout(() => {
-          number.classList.remove("bump");
-        }, 300);
-
-        lastVisits = visits;
-      }
-
-      clearInterval(interval);
-    }
-  }, 200);
-});
