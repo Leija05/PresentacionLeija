@@ -564,26 +564,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const counterEl = document.getElementById("visitCount");
   if (!counterEl) return;
 
-  fetch(
-    "https://api.counterapi.dev/v2/leija05s-team-2375/first-counter-2375/up",
-    {
-      method: "POST"
-    }
-  )
+  fetch("https://api.counterapi.dev/v2/leija05s-workspace/first-counter-2375/up", {
+    method: "POST"
+  })
     .then(res => res.json())
     .then(data => {
-      console.log("Respuesta CounterAPI:", data); // 👈 útil para debug
-
+      console.log("Respuesta CounterAPI:", data);
       counterEl.textContent = data.count;
-
-      counterEl.classList.add("bump");
-      setTimeout(() => counterEl.classList.remove("bump"), 300);
     })
     .catch(err => {
       console.error("Error contador:", err);
       counterEl.textContent = "—";
     });
 });
+
 
 
 
