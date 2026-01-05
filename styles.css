@@ -1322,21 +1322,6 @@ footer,
   transform: translateY(-4px) scale(1.05);
   box-shadow: 0 0 15px rgba(0,234,255,0.4);
 }
-.visit-counter {
-  margin-top: 10px;
-  font-size: 1.1rem;
-}
 
-#visitCount {
-  font-weight: bold;
-  color: #00eaff;
-  display: inline-block;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-#visitCount.bump {
-  transform: scale(1.4);
-  color: #00ff88;
-}
 
 
