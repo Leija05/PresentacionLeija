@@ -567,18 +567,15 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch(
     "https://api.counterapi.dev/v2/leija05s-team-2375/first-counter-2375/up",
     {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      }
+      method: "POST"
     }
   )
     .then(res => res.json())
     .then(data => {
-      const count = data.data.count;
-      counterEl.textContent = count;
+      console.log("Respuesta CounterAPI:", data); // 👈 útil para debug
 
-      // animación
+      counterEl.textContent = data.count;
+
       counterEl.classList.add("bump");
       setTimeout(() => counterEl.classList.remove("bump"), 300);
     })
@@ -587,10 +584,6 @@ document.addEventListener("DOMContentLoaded", () => {
       counterEl.textContent = "—";
     });
 });
-
-
-
-
 
 
 
