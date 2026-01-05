@@ -559,6 +559,7 @@ function animateModal() {
         modalContent.style.transform = "scale(1)";
     }, 10);
 }
+
 document.addEventListener("DOMContentLoaded", () => {
   const counterEl = document.getElementById("visitCount");
   if (!counterEl) return;
@@ -575,6 +576,7 @@ document.addEventListener("DOMContentLoaded", () => {
       counterEl.textContent = "—";
     });
 });
+
 
 
 
