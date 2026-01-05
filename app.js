@@ -560,22 +560,29 @@ function animateModal() {
     }, 10);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function incrementarVisitas() {
   const counterEl = document.getElementById("visitCount");
   if (!counterEl) return;
 
   fetch("https://api.counterapi.dev/v2/leija05s-team-2375/first-counter-2375/up")
-    .then(res => res.json())
+    .then(response => response.json())
     .then(data => {
-      counterEl.textContent = data.count;
+      // API v2 devuelve el valor aquí
+      const count = data.data.count;
 
+      counterEl.textContent = count;
+
+      // animación al subir
       counterEl.classList.add("bump");
       setTimeout(() => counterEl.classList.remove("bump"), 300);
     })
-    .catch(() => {
+    .catch(error => {
+      console.error("Error contador:", error);
       counterEl.textContent = "—";
     });
-});
+}
+
+
 
 
 
