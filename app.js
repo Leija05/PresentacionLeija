@@ -564,7 +564,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const counterEl = document.getElementById("visitCount");
   if (!counterEl) return;
 
-  fetch("https://api.counterapi.dev/v1/first-counter-2375/up")
+  fetch("https://api.counterapi.dev/v2/leija05s-team-2375/first-counter-2375/up")
     .then(res => res.json())
     .then(data => {
       counterEl.textContent = data.count;
@@ -576,6 +576,7 @@ document.addEventListener("DOMContentLoaded", () => {
       counterEl.textContent = "—";
     });
 });
+
 
 
 
