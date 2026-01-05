@@ -559,23 +559,28 @@ function animateModal() {
         modalContent.style.transform = "scale(1)";
     }, 10);
 }
-const counterEl = document.getElementById("visitCount");
+// 🔢 CONTADOR DE VISITAS (CounterAPI.dev)
+document.addEventListener("DOMContentLoaded", () => {
+  const counterEl = document.getElementById("visitCount");
 
-fetch("https://counterapi.dev/api/hectorleija/visitas")
-  .then(res => res.json())
-  .then(data => {
-    const count = data.count;
+  if (!counterEl) return;
 
-    counterEl.textContent = count;
+  fetch("https://counterapi.dev/api/hectorleija/visitas")
+    .then(res => res.json())
+    .then(data => {
+      counterEl.textContent = data.count;
 
-    // animación cuando cambia
-    counterEl.classList.add("bump");
-    setTimeout(() => counterEl.classList.remove("bump"), 300);
-  })
-  .catch(err => {
-    console.error("Error contador:", err);
-    counterEl.textContent = "—";
-  });
+      // animación
+      counterEl.classList.add("bump");
+      setTimeout(() => counterEl.classList.remove("bump"), 300);
+    })
+    .catch(err => {
+      console.error("Error contador:", err);
+      counterEl.textContent = "—";
+    });
+});
+
+
 
 
 
