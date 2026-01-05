@@ -560,27 +560,35 @@ function animateModal() {
     }, 10);
 }
 
-function incrementarVisitas() {
+document.addEventListener("DOMContentLoaded", () => {
   const counterEl = document.getElementById("visitCount");
   if (!counterEl) return;
 
-  fetch("https://api.counterapi.dev/v2/leija05s-team-2375/first-counter-2375/up")
-    .then(response => response.json())
+  fetch(
+    "https://api.counterapi.dev/v2/leija05s-team-2375/first-counter-2375/up",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+  )
+    .then(res => res.json())
     .then(data => {
-      // API v2 devuelve el valor aquí
       const count = data.data.count;
-
       counterEl.textContent = count;
 
-      // animación al subir
+      // animación
       counterEl.classList.add("bump");
       setTimeout(() => counterEl.classList.remove("bump"), 300);
     })
-    .catch(error => {
-      console.error("Error contador:", error);
+    .catch(err => {
+      console.error("Error contador:", err);
       counterEl.textContent = "—";
     });
-}
+});
+
+
 
 
 
