@@ -561,7 +561,7 @@ function animateModal() {
 }
 const counterEl = document.getElementById("visitCount");
 
-fetch("https://counterapi.dev/api/hectorleija/visitas")
+fetch("https://counterapi.dev/api/hector/visitas")
   .then(res => res.json())
   .then(data => {
     const count = data.count;
@@ -576,5 +576,6 @@ fetch("https://counterapi.dev/api/hectorleija/visitas")
     console.error("Error contador:", err);
     counterEl.textContent = "—";
   });
+
 
 
