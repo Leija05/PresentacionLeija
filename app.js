@@ -548,10 +548,7 @@ function openInstagram() {
         card.classList.remove("ig-click");
     }, 180);
 }
-window.addEventListener("load", updateVisitCounter);
 
-// Llamar al cargar la página
-window.addEventListener('load', updateVisitCounter);
 // Animaciones para modal
 function animateModal() {
     modalContent.style.opacity = 0;
@@ -562,3 +559,38 @@ function animateModal() {
         modalContent.style.transform = "scale(1)";
     }, 10);
 }
+let lastVisits = 0;
+
+window.addEventListener("load", () => {
+  // Espera a que GoatCounter cargue
+  const interval = setInterval(() => {
+    if (window.goatcounter && goatcounter.count) {
+      const visits = goatcounter.count;
+
+      const number = document.getElementById("visitNumber");
+      if (!number) return;
+
+      // Primera carga
+      if (lastVisits === 0) {
+        number.textContent = visits;
+        lastVisits = visits;
+        clearInterval(interval);
+        return;
+      }
+
+      // Si aumentó
+      if (visits > lastVisits) {
+        number.textContent = visits;
+        number.classList.add("bump");
+
+        setTimeout(() => {
+          number.classList.remove("bump");
+        }, 300);
+
+        lastVisits = visits;
+      }
+
+      clearInterval(interval);
+    }
+  }, 200);
+});
