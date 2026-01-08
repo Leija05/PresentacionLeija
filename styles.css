@@ -1489,3 +1489,66 @@ footer,
 .light-theme .placeholder {
   background: linear-gradient(135deg, #cbd5e1, #e2e8f0);
 }
+
+/* CONTENEDOR */
+.firma-neon {
+ width: 100%; 
+ height: auto; 
+ display: flex; 
+ justify-content: center; 
+ align-items: center; 
+ opacity: 1;
+}
+
+/* SVG */
+.firma-neon svg {
+ width: 100%;
+  max-width: 620px;
+  height: auto;
+}
+
+
+/* TRAZOS */
+.firma-path {
+  fill: none;
+  stroke: #7fd6e8;
+  stroke-width: 38;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  /* Preparación animación */
+  stroke-dasharray: var(--length);
+  stroke-dashoffset: var(--length);
+
+  /* Glow controlado */
+  filter:
+    drop-shadow(0 0 3px rgba(127, 214, 232, 0.35))
+    drop-shadow(0 0 10px rgba(127, 214, 232, 0.55));
+
+  opacity: 0;
+}
+
+/* Animación SOLO cuando entra en pantalla */
+.firma-neon.animate .firma-path {
+  animation:
+    draw-neon 4.2s ease-out forwards,
+    glow-in 1.2s ease-out forwards;
+}
+
+/* DIBUJADO */
+@keyframes draw-neon {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* APARICIÓN DEL GLOW */
+@keyframes glow-in {
+  to {
+    opacity: 1;
+    filter:
+      drop-shadow(0 0 6px rgba(127, 214, 232, 0.7))
+      drop-shadow(0 0 18px rgba(127, 214, 232, 0.85))
+      drop-shadow(0 0 30px rgba(127, 214, 232, 0.45));
+  }
+}

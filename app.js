@@ -609,3 +609,37 @@ document.querySelectorAll('.project-card').forEach(card => {
     video.pause();
   });
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const firma = document.querySelector(".firma-neon");
+  const paths = firma.querySelectorAll(".firma-path");
+
+  // Preparar cada trazo
+  paths.forEach((path, index) => {
+    const length = path.getTotalLength();
+    path.style.setProperty("--length", length);
+    path.style.animationDelay = `${index * 0.35}s`;
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          firma.classList.add("animate");
+        } else {
+          // Reiniciar animación al salir
+          firma.classList.remove("animate");
+          paths.forEach(path => {
+            path.style.animation = "none";
+            path.getBoundingClientRect(); // force reflow
+            path.style.animation = "";
+          });
+        }
+      });
+    },
+    {
+      threshold: 0.6 // 60% visible
+    }
+  );
+
+  observer.observe(firma);
+});
