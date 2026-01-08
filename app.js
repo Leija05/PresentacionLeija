@@ -643,3 +643,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   observer.observe(firma);
 });
+function isMobile() {
+  return window.matchMedia("(max-width: 768px)").matches;
+}
+
+if (isMobile()) {
+  document.querySelectorAll(".project-card video").forEach(video => {
+    video.play().catch(() => {
+      // algunos navegadores requieren interacción
+    });
+  });
+}

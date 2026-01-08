@@ -1552,3 +1552,23 @@ footer,
       drop-shadow(0 0 30px rgba(127, 214, 232, 0.45));
   }
 }
+@media (max-width: 768px) {
+
+  /* En móvil el video SIEMPRE visible */
+  .media video {
+    opacity: 1;
+  }
+
+  .media img {
+    opacity: 0;
+  }
+
+}
+.media video {
+  pointer-events: none;
+}
+@media (max-width: 768px) {
+  .project-card:active {
+    transform: scale(0.97);
+  }
+}
