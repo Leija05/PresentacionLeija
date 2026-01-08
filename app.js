@@ -259,8 +259,6 @@ function openModal(type) {
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-plain.svg" alt="C#">
             <h3>C#</h3>
             <p>Lenguaje de programación orientado a objetos. Se usa para crear aplicaciones de escritorio, web y videojuegos con la plataforma .NET.</p>
-            <h4>Dominio: 80%</h4>
-            <div class="bar"><div class="progress" style="--progress-width:80%; width:80%"></div></div>
         </div>
       `;
     }
@@ -271,8 +269,6 @@ function openModal(type) {
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg" alt="HTML" width="50">
             <h3>HTML</h3>
             <p>Es el lenguaje que estructura una página web.Define títulos, textos, imágenes y secciones.</p>
-            <h3>Domino: 70%</h3>
-            <div class="bar"><div class="progress" style="--progress-width:70%; width:70%"></div></div>
         </div>
       `;
     }
@@ -283,8 +279,6 @@ function openModal(type) {
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" alt="CSS" width="50">
             <h3>CSS</h3>
             <p>Se encarga del diseño: colores, tamaños, animaciones y estilos visuales.</p>
-            <h3>Domino: 50%</h3>
-            <div class="bar"><div class="progress" style="--progress-width:50%; width:50%"></div></div>
         </div>
       `;
     }
@@ -295,8 +289,6 @@ function openModal(type) {
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" alt="JavaScript" width="50">
             <h3>JavaScript</h3>
             <p>Hace la página interactiva: botones, animaciones, ventanas y lógica.</p>
-            <h3>Domino: 40%</h3>
-            <div class="bar"><div class="progress" style="--progress-width:40%; width:40%"></div></div>
         </div>
       `;
     }
