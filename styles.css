@@ -268,11 +268,11 @@ section,
 button,
 footer,
 .modal-content {
-    transition: background 0.45s ease, color 0.45s ease, box-shadow 0.45s ease;
+    transition: background 1s ease, color 0.45s ease, box-shadow 0.45s ease;
 }
 
 .fade-in {
-    animation: fade 0.6s ease;
+    animation: fade 1s ease;
 }
 
 @keyframes fade {
@@ -1120,26 +1120,6 @@ footer,
     transform: scale(1.15);
 }
 
-.bar {
-    background: #203a43;
-    border-radius: 10px;
-    overflow: hidden;
-    height: 15px;
-    margin-top: 5px;
-}
-
-.progress {
-    height: 100%;
-    background: linear-gradient(90deg, #00eaff, #00ffae);
-    width: 0; /* animación inicial */
-    border-radius: 10px;
-    animation: fillProgress 1s forwards;
-}
-
-@keyframes fillProgress {
-    from { width: 0; }
-    to { width: var(--progress-width); }
-}
 
 .hero-avatar-wrapper {
   position: relative;
@@ -1492,12 +1472,12 @@ footer,
 
 /* CONTENEDOR */
 .firma-neon {
- width: 100%; 
- height: auto; 
- display: flex; 
- justify-content: center; 
- align-items: center; 
- opacity: 1;
+  width: 100%;
+  height: auto;   /* ✔ correcto */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
 }
 
 /* SVG */
@@ -1516,11 +1496,9 @@ footer,
   stroke-linecap: round;
   stroke-linejoin: round;
 
-  /* Preparación animación */
   stroke-dasharray: var(--length);
   stroke-dashoffset: var(--length);
 
-  /* Glow controlado */
   filter:
     drop-shadow(0 0 3px rgba(127, 214, 232, 0.35))
     drop-shadow(0 0 10px rgba(127, 214, 232, 0.55));
@@ -1528,11 +1506,33 @@ footer,
   opacity: 0;
 }
 
-/* Animación SOLO cuando entra en pantalla */
 .firma-neon.animate .firma-path {
   animation:
     draw-neon 4.2s ease-out forwards,
-    glow-in 1.2s ease-out forwards;
+    glow-in 1.2s ease-out forwards,
+    neon-pulse 1.2s ease-in-out 4.2s 2 forwards;
+}
+
+@keyframes neon-pulse {
+  0% {
+    filter:
+      drop-shadow(0 0 6px rgba(127, 214, 232, 0.6))
+      drop-shadow(0 0 18px rgba(127, 214, 232, 0.8));
+  }
+
+  50% {
+    filter:
+      drop-shadow(0 0 12px rgba(127, 214, 232, 1))
+      drop-shadow(0 0 30px rgba(127, 214, 232, 1))
+      drop-shadow(0 0 50px rgba(127, 214, 232, 0.8));
+  }
+
+  100% {
+    filter:
+      drop-shadow(0 0 8px rgba(127, 214, 232, 0.85))
+      drop-shadow(0 0 24px rgba(127, 214, 232, 0.95))
+      drop-shadow(0 0 36px rgba(127, 214, 232, 0.6));
+  }
 }
 
 /* DIBUJADO */
@@ -1571,4 +1571,71 @@ footer,
   .project-card:active {
     transform: scale(0.97);
   }
+}
+/* =============================== */
+/* 🎬 SCROLL ANIMATIONS BASE */
+/* =============================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variantes */
+.reveal-left {
+  transform: translateX(-40px);
+}
+
+.reveal-right {
+  transform: translateX(40px);
+}
+
+.reveal-zoom {
+  transform: scale(0.9);
+}
+
+.reveal.show.reveal-left,
+.reveal.show.reveal-right {
+  transform: translateX(0);
+}
+
+.reveal.show.reveal-zoom {
+  transform: scale(1);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+/* TRANSICIÓN GLOBAL DE TEMA */
+.theme-transition {
+  animation: themeFade 0.6s ease;
+}
+
+@keyframes themeFade {
+  0% {
+    opacity: 0.7;
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+.nav-theme-btn {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.nav-theme-btn:active {
+  transform: scale(0.9);
+  box-shadow: 0 0 25px rgba(0,234,255,0.6);
 }

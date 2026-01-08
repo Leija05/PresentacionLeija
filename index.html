@@ -17,51 +17,54 @@
 <body>
 
     <header>
-        <div class="hero-avatar-wrapper" onclick="openModal('contacto')">
+  <div class="hero-avatar-wrapper reveal reveal-zoom" onclick="openModal('contacto')">
+    <span class="avatar-contact-icon">☎️</span>
+    <img src="https://i.imgur.com/obsuT25.jpeg" alt="Avatar de Hector Leija" class="hero-avatar">
+  </div>
 
-            <span class="avatar-contact-icon">☎️</span>
-            <img src="https://i.imgur.com/obsuT25.jpeg" alt="Avatar de Hector Leija" class="hero-avatar">
+  <h1 class="reveal reveal-zoom reveal-delay-1">Hola, soy Hector Leija</h1>
+  <p class="reveal reveal-delay-2">
+    Estudiante de Ingeniería en Sistemas · Programador en formación
+  </p>
 
-        </div>
+  <br>
 
-        <h1>Hola, soy Hector Leija</h1>
-        <p>Estudiante de Ingeniería en Sistemas · Programador en formación</p>
-        <br>
-        
-        <button class="nav-theme-btn" onclick="toggleTheme()">🌙 / ☀️</button>
-    </header>
+  <button class="nav-theme-btn reveal reveal-delay-3" onclick="toggleTheme()">
+    🌙 / ☀️
+  </button>
+</header>
+
     
+    <section class="reveal">
+  <h2 class="reveal-left">Sobre mí</h2>
+
+  <div class="buttons">
+    <button class="reveal reveal-delay-1" onclick="openModal('sobreMi')">👤 Más Sobre mí</button>
+    <button class="reveal reveal-delay-2" onclick="openModal('estudios')">📚 Estudios</button>
+    <button class="reveal reveal-delay-3" onclick="openModal('timeline')">⏳ Mi camino</button>
+    <button class="reveal reveal-delay-4" onclick="openModal('juegos')">🎮 Juegos</button>
+    <button class="reveal reveal-delay-5" onclick="openModal('musica')">🎵 Música</button>
+    <button class="reveal reveal-delay-6" onclick="openModal('contacto')">📬 Contacto</button>
+  </div>
+</section>
+
     <section>
-        <h2>Sobre mí</h2>
-        <div class="buttons">
-
-            <button onclick="openModal('sobreMi')">👤 Mas Sobre mí</button>
-            <button onclick="openModal('estudios')">📚 Estudios</button>
-            <button onclick="openModal('timeline')">⏳ Mi camino</button>
-            <button onclick="openModal('juegos')">🎮 Juegos</button>
-            <button onclick="openModal('musica')">🎵 Música</button>
-            <button onclick="openModal('contacto')">📬 Contacto</button>
-
-        </div>
-    </section>
-
-    <section>
-        <h2>Lo que domino</h2>
+       <h2 class="reveal-left">Lo que domino</h2>
         <div class="buttons skills">
 
-            <button onclick="openModal('C#')" class="skill-btn">
+            <button onclick="openModal('C#')" class="skill-btn reveal reveal-delay-1">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-plain.svg" alt="C#">
             </button>
 
-            <button onclick="openModal('html')" class="skill-btn">
+            <button onclick="openModal('html')" class="skill-btn reveal reveal-delay-2">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg" alt="HTML">
             </button>
 
-            <button onclick="openModal('css')" class="skill-btn">
+            <button onclick="openModal('css')" class="skill-btn reveal reveal-delay-3">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" alt="CSS">
             </button>
 
-            <button onclick="openModal('js')" class="skill-btn">
+            <button onclick="openModal('js')" class="skill-btn reveal reveal-delay-4">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" alt="JavaScript">
             </button>
 
@@ -69,15 +72,15 @@
     </section>
 
     <section id="proyectos">
-        <h2>Mis Proyectos</h2>
-        <p class="section-desc">
+         <h2 class="reveal-left">Mis Proyectos</h2>
+        <p class="section-desc reveal reveal-delay-1">
             Algunos de mis proyectos web y trabajos personales:
         </p>
 
         <div class="projects-grid">
 
             <!-- PROYECTO 1 -->
-            <div class="project-card"
+            <div class="project-card reveal reveal-zoom reveal-delay-1"
                 onclick="openProject({
                 title: 'Pagina Web Restaurant',
                 video: 'videos/Restaurant.mp4',
@@ -104,7 +107,7 @@
             
 
             <!-- PROYECTO 2 -->
-            <div class="project-card"
+            <div class="project-card reveal reveal-zoom reveal-delay-2"
                 onclick="openProject({
                 title: 'Panadería Electron',
                 video: 'videos/Panaderia.mp4',
@@ -130,7 +133,7 @@
             </div>
 
             <!-- PROYECTOS FUTUROS -->
-            <div class="project-card coming-soon">
+            <div class="project-card coming-soon reveal reveal-zoom reveal-delay-3">
                 <div class="project-image placeholder"></div>
                 <div class="project-info">
                     <h3>Próximo proyecto</h3>
@@ -140,9 +143,9 @@
         </div>
     </section>
 
-    <footer>
-        <p>Pagina Creada por</p>
-        <p>Hector Leija</p>
+    <footer class="reveal">
+        <p class="reveal">Pagina Creada por</p>
+        <p class="reveal reveal-delay-1">Hector Leija</p>
         <div class="firma-neon">
             <svg
                 class="firma-svg"

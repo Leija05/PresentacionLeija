@@ -414,7 +414,19 @@ const clickSound = new Audio(
     "https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3"
 );
 function toggleTheme() {
-    document.body.classList.toggle("light-theme");
+  const body = document.body;
+
+  // Quita animación anterior si existe
+  body.classList.remove("theme-transition");
+
+  // Forzar reflow para reiniciar animación
+  void body.offsetWidth;
+
+  // Cambia tema
+  body.classList.toggle("light-theme");
+
+  // Aplica animación
+  body.classList.add("theme-transition");
 }
 function copyDiscord() {
     const discordUser = "_leija"; // nombre visible
@@ -589,37 +601,29 @@ function animateModal() {
         modalContent.style.transform = "scale(1)";
     }, 10);
 }
-document.querySelectorAll('.project-card').forEach(card => {
-  const video = card.querySelector('video');
-
-  card.addEventListener('mouseenter', () => {
-    video.currentTime = 0;
-    video.play();
-  });
-
-  card.addEventListener('mouseleave', () => {
-    video.pause();
-  });
-});
 document.addEventListener("DOMContentLoaded", () => {
   const firma = document.querySelector(".firma-neon");
+  if (!firma) return;
+
   const paths = firma.querySelectorAll(".firma-path");
 
-  // Preparar cada trazo
+  // preparar longitudes una sola vez
   paths.forEach((path, index) => {
     const length = path.getTotalLength();
     path.style.setProperty("--length", length);
     path.style.animationDelay = `${index * 0.35}s`;
   });
 
-  const observer = new IntersectionObserver(
-    (entries) => {
+  const firmaObserver = new IntersectionObserver(
+    entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          // ▶️ entra en pantalla → animar
           firma.classList.add("animate");
         } else {
-          // Reiniciar animación al salir
+          // ⛔ sale de pantalla → reiniciar
           firma.classList.remove("animate");
+
           paths.forEach(path => {
             path.style.animation = "none";
             path.getBoundingClientRect(); // force reflow
@@ -628,13 +632,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     },
-    {
-      threshold: 0.6 // 60% visible
-    }
+    { threshold: 0.5 }
   );
 
-  observer.observe(firma);
+  firmaObserver.observe(firma);
 });
+
 function isMobile() {
   return window.matchMedia("(max-width: 768px)").matches;
 }
@@ -646,3 +649,24 @@ if (isMobile()) {
     });
   });
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const reveals = document.querySelectorAll(".reveal");
+
+  const revealObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        } else {
+          entry.target.classList.remove("show"); // 🔁 si quieres que se reinicie
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+      rootMargin: "0px 0px -80px 0px"
+    }
+  );
+
+  reveals.forEach(el => revealObserver.observe(el));
+});
