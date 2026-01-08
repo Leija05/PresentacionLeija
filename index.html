@@ -18,9 +18,10 @@
 
     <header>
         <div class="hero-avatar-wrapper" onclick="openModal('contacto')">
-            <span class="avatar-contact-icon">☎️</span>
 
+            <span class="avatar-contact-icon">☎️</span>
             <img src="https://i.imgur.com/obsuT25.jpeg" alt="Avatar de Hector Leija" class="hero-avatar">
+
         </div>
 
         <h1>Hola, soy Hector Leija</h1>
@@ -28,16 +29,18 @@
         <br>
         <button class="nav-theme-btn" onclick="toggleTheme()">🌙 / ☀️</button>
     </header>
-
+    
     <section>
         <h2>Sobre mí</h2>
         <div class="buttons">
+
             <button onclick="openModal('sobreMi')">👤 Mas Sobre mí</button>
             <button onclick="openModal('estudios')">📚 Estudios</button>
             <button onclick="openModal('timeline')">⏳ Mi camino</button>
             <button onclick="openModal('juegos')">🎮 Juegos</button>
             <button onclick="openModal('musica')">🎵 Música</button>
             <button onclick="openModal('contacto')">📬 Contacto</button>
+
         </div>
     </section>
 
@@ -64,20 +67,85 @@
         </div>
     </section>
 
-   <footer>
+    <section id="proyectos">
+        <h2>Mis Proyectos</h2>
+        <p class="section-desc">
+            Algunos de mis proyectos web y trabajos personales:
+        </p>
+
+        <div class="projects-grid">
+
+            <!-- PROYECTO 1 -->
+            <div class="project-card"
+                onclick="openProject({
+                title: 'Pagina Web Restaurant',
+                video: 'videos/Restaurant.mp4',
+                description: 'Sitio web de restaurante con galería, diseño responsivo y animaciones. Desarrollado con HTML, CSS y JavaScript.',
+                link: 'https://leija05.github.io/Restaurant/#gallery'
+                })">
+
+                <div class="media">
+                    <video
+                        src="videos/Restaurant.mp4"
+                        muted
+                        loop
+                        preload="metadata">
+                    </video>
+                    <img src="img/RestaurantProyect.png" alt="Proyecto Restaurant">
+                </div>
+
+                <div class="project-info">
+                    <h3>Pagina Web Restaurant</h3>
+                    <p>HTML, CSS, JavaScript</p>
+                </div>
+            </div>
+            
+
+            <!-- PROYECTO 2 -->
+            <div class="project-card"
+                onclick="openProject({
+                title: 'Panadería Electron',
+                video: 'videos/Panaderia.mp4',
+                description: 'Página web de sistema de venta de una panadería usando Electron para app de escritorio, diseño llamativo yestructura responsive.',
+                link: 'https://github.com/Leija05/PanaderiaElectron.git'
+                })">
+
+                <div class="media">
+                    <video
+                        src="videos/Panaderia.mp4"
+                        muted
+                        loop
+                        preload="metadata">
+                    </video>
+                    <img src="img/PanaderiaElectron.png" alt="Proyecto Panadería Electron">
+                </div>
+
+                <div class="project-info">
+                    <h3>Panadería Electron</h3>
+                    <p>HTML, CSS, JavaScript,nodeJs, Electron</p>
+                </div>
+            </div>
+
+            <!-- PROYECTOS FUTUROS -->
+            <div class="project-card coming-soon">
+                <div class="project-image placeholder"></div>
+                <div class="project-info">
+                    <h3>Próximo proyecto</h3>
+                    <p>En desarrollo…</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
         <p>© 2026 Hector Leija</p>
         <p>Aprendiendo programación paso a paso</p>
     </footer>
-    <!-- MODAL -->
+
     <div class="modal" id="modal">
         <div class="modal-content" id="modalContent"></div>
     </div>
+
     <script src="app.js"></script>
 </body> 
-
 </html>
-
-
-
-
-

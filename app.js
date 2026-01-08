@@ -306,6 +306,44 @@ function openModal(type) {
     animateModal();
 }
 
+function openProject(project) {
+  const content = `
+    <h3>${project.title}</h3>
+
+    <video 
+      src="${project.video}" 
+      controls 
+      autoplay 
+      style="
+        width:100%;
+        max-height:420px;
+        border-radius:16px;
+        background:black;
+        margin:15px 0;
+      ">
+    </video>
+
+    <p style="margin:15px 0; line-height:1.6;">
+      ${project.description}
+    </p>
+
+    <a 
+      href="${project.link}" 
+      target="_blank" 
+      class="download-btn"
+      style="display:inline-block; margin-bottom:15px;">
+      🌐 Ir al proyecto
+    </a>
+  `;
+
+  modalContent.innerHTML = content + `
+    <button class="close" onclick="closeModal()">Cerrar</button>
+  `;
+
+  modal.style.display = "flex";
+  animateModal();
+}
+
 function showGame(game) {
     let gameContent = "";
     if (game === "minecraft") {
@@ -559,14 +597,15 @@ function animateModal() {
         modalContent.style.transform = "scale(1)";
     }, 10);
 }
+document.querySelectorAll('.project-card').forEach(card => {
+  const video = card.querySelector('video');
 
+  card.addEventListener('mouseenter', () => {
+    video.currentTime = 0;
+    video.play();
+  });
 
-
-
-
-
-
-
-
-
-
+  card.addEventListener('mouseleave', () => {
+    video.pause();
+  });
+});
