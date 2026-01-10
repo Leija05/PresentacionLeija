@@ -8,6 +8,18 @@ function closeModal() {
 modal.addEventListener("click", (e) => {
     if (e.target === modal) closeModal();
 });
+const btnTop = document.getElementById("btn-top");
+
+if (btnTop) {
+  window.addEventListener("scroll", () => {
+    btnTop.classList.toggle("show", window.scrollY > 400);
+  });
+
+  btnTop.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
 
 function openModal(type) {
     clickSound.play();
@@ -411,7 +423,7 @@ function showGame(game) {
 }
 
 const clickSound = new Audio(
-    "https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3"
+    "https://www.soundsnap.com/clean_interface_buttons_32_wav"
 );
 function toggleTheme() {
   const body = document.body;
@@ -645,10 +657,10 @@ function isMobile() {
 if (isMobile()) {
   document.querySelectorAll(".project-card video").forEach(video => {
     video.play().catch(() => {
-      // algunos navegadores requieren interacción
     });
   });
 }
+
 document.addEventListener("DOMContentLoaded", () => {
   const reveals = document.querySelectorAll(".reveal");
 

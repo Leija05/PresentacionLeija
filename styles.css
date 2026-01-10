@@ -1470,22 +1470,18 @@ footer,
   background: linear-gradient(135deg, #cbd5e1, #e2e8f0);
 }
 
-/* CONTENEDOR */
 .firma-neon {
-  width: 100%;
-  height: auto;   /* ✔ correcto */
   display: flex;
   justify-content: center;
-  align-items: center;
-  opacity: 1;
+  overflow: hidden;
 }
 
-/* SVG */
 .firma-neon svg {
- width: 100%;
-  max-width: 620px;
+  width: 12%;
   height: auto;
+  display: block;
 }
+
 
 
 /* TRAZOS */
@@ -1572,6 +1568,7 @@ footer,
     transform: scale(0.97);
   }
 }
+
 /* =============================== */
 /* 🎬 SCROLL ANIMATIONS BASE */
 /* =============================== */
@@ -1610,10 +1607,12 @@ footer,
 .reveal.show.reveal-zoom {
   transform: scale(1);
 }
+
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
+
 /* TRANSICIÓN GLOBAL DE TEMA */
 .theme-transition {
   animation: themeFade 0.6s ease;
@@ -1629,6 +1628,7 @@ footer,
     filter: blur(0);
   }
 }
+
 .nav-theme-btn {
   transition:
     transform 0.25s ease,
@@ -1637,5 +1637,67 @@ footer,
 
 .nav-theme-btn:active {
   transform: scale(0.9);
-  box-shadow: 0 0 25px rgba(0,234,255,0.6);
+  box-shadow: 0 0 25px rgba(61, 113, 117, 0.6);
 }
+
+/* ================= BOTÓN VOLVER ARRIBA ================= */
+#btn-top {
+  position: fixed;
+  right: 22px;
+  bottom: 100px;
+
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+
+  background: radial-gradient(circle at top left,
+    #9df6ff,
+    #00eaff
+  );
+
+  color: #000;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 0 25px rgba(0,234,255,0.45);
+  cursor: pointer;
+  z-index: 2500;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+#btn-top.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#btn-top:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 0 40px rgba(0,234,255,0.65);
+}
+
+/* Modo claro */
+body.light #btn-top {
+  color: #000;
+  box-shadow: 0 0 30px rgba(0,0,0,0.25);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #btn-top {
+    bottom: 90px;
+    right: 18px;
+  }
+}
+
