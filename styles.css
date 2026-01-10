@@ -286,21 +286,6 @@ footer,
         transform: translateY(0);
     }
 }
-
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2rem;
-    }
-
-    section {
-        padding: 60px 5%;
-    }
-
-    .buttons {
-        grid-template-columns: 1fr;
-    }
-}
-
 .social-buttons {
     display: flex;
     justify-content: center;
@@ -1012,103 +997,7 @@ footer,
     margin-top: 12px;
     border-radius: 16px;
 }
-/* =============================== */
-/* 📱 MOBILE FIRST OPTIMIZATION */
-/* =============================== */
 
-@media (max-width: 768px) {
-
-  header {
-    padding: 40px 20px;
-    height: auto;
-  }
-
-  header h1 {
-    font-size: 2rem;
-  }
-
-  header p {
-    font-size: 1rem;
-    opacity: 0.85;
-  }
-
-  section {
-    padding: 50px 20px;
-  }
-
-  h2 {
-    font-size: 1.4rem;
-  }
-
-  .buttons {
-    grid-template-columns: 1fr;
-  }
-
-  button {
-    padding: 14px;
-    font-size: 1rem;
-  }
-
-  /* MODAL */
-  .modal-content {
-    max-height: 90vh;
-    overflow-y: auto;
-    padding: 20px;
-  }
-
-  /* INSTAGRAM CARD */
-  .ig-premium {
-    flex-direction: row;
-    padding: 14px;
-  }
-
-  .ig-ring {
-    width: 60px;
-    height: 60px;
-  }
-
-  .ig-info strong {
-    font-size: 1rem;
-  }
-
-  /* DISCORD */
-  .discord-profile {
-    flex-direction: row;
-  }
-
-  .discord-profile img {
-    width: 60px;
-    height: 60px;
-  }
-
-  .discord-status-text {
-    font-size: 0.85rem;
-  }
-
-  /* SPOTIFY */
-  .spotify-box {
-    flex-direction: row;
-    gap: 10px;
-  }
-
-  .spotify-box img {
-    width: 50px;
-    height: 50px;
-  }
-
-  .spotify-info strong {
-    font-size: 0.9rem;
-  }
-
-  .spotify-info p {
-    font-size: 0.8rem;
-  }
-
-  .spotify-time {
-    font-size: 0.75rem;
-  }
-
-}
 .skill-card img {
     width: 60px;
     height: 60px;
@@ -1374,14 +1263,7 @@ footer,
   background: linear-gradient(135deg,#203a43,#2c5364);
 }
 
-/* ===================== */
-/* RESPONSIVE */
-/* ===================== */
-@media (max-width: 768px) {
-  .project-image img {
-    height: 170px;
-  }
-}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1470,18 +1352,16 @@ footer,
   background: linear-gradient(135deg, #cbd5e1, #e2e8f0);
 }
 
-.firma-neon {
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
+.firma-neon { 
+  display: flex; 
+  justify-content: center; 
+  overflow: hidden; 
+} 
+.firma-neon svg { 
+  width: 20%; 
+  height: auto; 
+  display: block; 
 }
-
-.firma-neon svg {
-  width: 12%;
-  height: auto;
-  display: block;
-}
-
 
 
 /* TRAZOS */
@@ -1548,27 +1428,6 @@ footer,
       drop-shadow(0 0 30px rgba(127, 214, 232, 0.45));
   }
 }
-@media (max-width: 768px) {
-
-  /* En móvil el video SIEMPRE visible */
-  .media video {
-    opacity: 1;
-  }
-
-  .media img {
-    opacity: 0;
-  }
-
-}
-.media video {
-  pointer-events: none;
-}
-@media (max-width: 768px) {
-  .project-card:active {
-    transform: scale(0.97);
-  }
-}
-
 /* =============================== */
 /* 🎬 SCROLL ANIMATIONS BASE */
 /* =============================== */
@@ -1676,7 +1535,12 @@ footer,
     opacity 0.3s ease,
     box-shadow 0.3s ease;
 }
-
+.btn-disabled {
+    pointer-events: none; /* Hace que el botón ignore los clics */
+    opacity: 0.4;         /* (Opcional) Lo hace un poco transparente para que se vea "desactivado" */
+    cursor: default;      /* El mouse no cambiará a mano al pasar por encima */
+    z-index: 1;           /* Lo mantiene al fondo */
+}
 #btn-top.show {
   opacity: 1;
   pointer-events: auto;
@@ -1692,12 +1556,158 @@ body.light #btn-top {
   color: #000;
   box-shadow: 0 0 30px rgba(0,0,0,0.25);
 }
-
-/* Responsive */
+/* =============================== */
+/* 📱 MOBILE (max-width: 768px) */
+/* =============================== */
 @media (max-width: 768px) {
+
+  /* ===== LAYOUT GENERAL ===== */
+  header {
+    padding: 40px 20px;
+    height: auto;
+  }
+
+  header h1 {
+    font-size: 2rem;
+    
+  }
+
+  header p {
+    font-size: 1rem;
+    opacity: 0.85;
+  }
+
+  section {
+    padding: 50px 20px;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    border-left: 25px solid #00eaff;
+    padding-left: 15px;
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+  }
+  /* Variantes */
+  .reveal-left {
+    transform: translateX(-40px);
+  }
+
+  .reveal-right {
+    transform: translateX(40px);
+  }
+  /* ===== BOTONES ===== */
+  .buttons {
+    grid-template-columns: 1fr;
+  }
+
+  button {
+    padding: 14px;
+    font-size: 1rem;
+  }
+
+  /* ===== MODAL ===== */
+  .modal-content {
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 20px;
+  }
+
+  /* ===== FIRMA NEON ===== */
+  .firma-neon {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .firma-neon svg {
+    width: 50%;
+    height: auto;
+    display: block;
+  }
+
+  .firma-path {
+    stroke-width: 30;
+  }
+
+  /* ===== PROYECTOS ===== */
+  .project-image img {
+    height: 170px;
+  }
+
+  .project-card:active {
+    transform: scale(0.97);
+  }
+
+  /* En móvil el video siempre visible */
+  .media video {
+    opacity: 1;
+  }
+
+  .media img {
+    opacity: 0;
+  }
+
+  /* ===== INSTAGRAM ===== */
+  .ig-premium {
+    padding: 14px;
+    flex-direction: row;
+  }
+
+  .ig-ring {
+    width: 60px;
+    height: 60px;
+  }
+
+  .ig-info strong {
+    font-size: 1rem;
+  }
+
+  /* ===== DISCORD ===== */
+  .discord-profile {
+    flex-direction: row;
+  }
+
+  .discord-profile img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .discord-status-text {
+    font-size: 0.85rem;
+  }
+
+  /* ===== SPOTIFY ===== */
+  .spotify-box {
+    gap: 10px;
+  }
+
+  .spotify-box img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .spotify-info strong {
+    font-size: 0.9rem;
+  }
+
+  .spotify-info p {
+    font-size: 0.8rem;
+  }
+
+  .spotify-time {
+    font-size: 0.75rem;
+  }
+
+  /* ===== BOTÓN VOLVER ARRIBA ===== */
   #btn-top {
     bottom: 90px;
     right: 18px;
   }
-}
 
+}

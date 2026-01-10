@@ -1,14 +1,16 @@
 const modal = document.getElementById("modal");
 const modalContent = document.getElementById("modalContent");
+const btnTop = document.getElementById("btn-top");
 
 function closeModal() {
     modal.style.display = "none";
+    if(btnTop) btnTop.style.visibility = 'visible';
 }
 
 modal.addEventListener("click", (e) => {
     if (e.target === modal) closeModal();
 });
-const btnTop = document.getElementById("btn-top");
+
 
 if (btnTop) {
   window.addEventListener("scroll", () => {
@@ -25,7 +27,8 @@ function openModal(type) {
     clickSound.play();
     clickSound.currentTime = 0;
     let content = "";
-
+    
+    if(btnTop) btnTop.style.visibility = 'hidden';
     if (type === "juegos") {
         content = `
         <h3>🎮 Mis juegos favoritos</h3>
