@@ -1,14 +1,18 @@
 const modal = document.getElementById("modal");
 const modalContent = document.getElementById("modalContent");
 const btnTop = document.getElementById("btn-top");
+const portfolioBtn = document.getElementById("portfolioBtn");
+const btn = document.getElementById("themeBtn");
 
 function closeModal() {
-    modal.style.display = "none";
-    if(btnTop) btnTop.style.visibility = 'visible';
+  modal.style.display = "none";
+  if (btnTop) btnTop.style.visibility = 'visible';
+  if (portfolioBtn) portfolioBtn.classList.remove("hide");
+  if (btn) btn.classList.remove("hide");
 }
 
 modal.addEventListener("click", (e) => {
-    if (e.target === modal) closeModal();
+  if (e.target === modal) closeModal();
 });
 
 
@@ -24,13 +28,15 @@ if (btnTop) {
 }
 
 function openModal(type) {
-    clickSound.play();
-    clickSound.currentTime = 0;
-    let content = "";
-    
-    if(btnTop) btnTop.style.visibility = 'hidden';
-    if (type === "juegos") {
-        content = `
+  clickSound.play();
+  clickSound.currentTime = 0;
+  let content = "";
+  if (btn) btn.classList.add("hide");
+  if (portfolioBtn) portfolioBtn.classList.add("hide");
+  if (btnTop) btnTop.style.visibility = 'hidden';
+
+  if (type === "juegos") {
+    content = `
         <h3>🎮 Mis juegos favoritos</h3>
 
         <div class="games-grid">
@@ -65,10 +71,10 @@ function openModal(type) {
             </div>
         </div>
     `;
-    }
+  }
 
-    if (type === "sobreMi") {
-        content = `
+  if (type === "sobreMi") {
+    content = `
       <h3>👤 Sobre mí</h3>
       <p>
         Mi nombre es <strong>Hector Aaron Leija Zavala</strong>.  
@@ -84,10 +90,10 @@ function openModal(type) {
         de crecer tanto personal como profesionalmente.
       </p>
     `;
-    }
+  }
 
-    if (type === "estudios") {
-        content = `
+  if (type === "estudios") {
+    content = `
       <h3>📚 Estudios</h3>
       <p>
       Graduado como Técnico en Programación en el año 2023 de el Bachillerato CBTis 234.
@@ -112,10 +118,10 @@ function openModal(type) {
         aplicaciones de escritorio o móviles.
       </p>
     `;
-    }
+  }
 
-    if (type === "timeline") {
-        content = `
+  if (type === "timeline") {
+    content = `
         <div class="timeline">
 
     <div class="timeline-item">
@@ -165,14 +171,39 @@ function openModal(type) {
 
   </div>
       `;
-    }
+  }
 
-    if (type === "contacto") {
-        content = `
-        <h3>📬 Contacto</h3>
-        <p>Sígueme o contáctame en mis redes:</p>
+  if (type === "contacto") {
+    content = `
+    <h3>📬 Contacto</h3>
+    <div class="contact-icons">
 
+      <!-- GITHUB -->
+      <button class="icon-btn" onclick="window.open('https://github.com/Leija05','_blank')">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2C6.47 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.48v-1.7c-2.78.62-3.37-1.2-3.37-1.2-.45-1.16-1.11-1.47-1.11-1.47-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.9 1.56 2.36 1.11 2.94.85.1-.67.35-1.11.63-1.37-2.22-.26-4.56-1.13-4.56-5 0-1.1.39-2 1.03-2.7-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.03A9.3 9.3 0 0 1 12 6.8c.85 0 1.7.12 2.5.36 1.9-1.3 2.75-1.03 2.75-1.03.55 1.4.2 2.44.1 2.7.64.7 1.03 1.6 1.03 2.7 0 3.88-2.34 4.73-4.57 5 .36.32.68.94.68 1.9v2.8c0 .27.18.59.69.48A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
+        </svg>
+      </button>
+
+      <!-- LINKEDIN -->
+      <button class="icon-btn" onclick="window.open('https://www.linkedin.com/in/hector-aaron-leija-zavala-3a96a23a8/','_blank')">
+        <svg viewBox="0 0 24 24">
+          <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0zM8 8h5v2.3h.07c.7-1.3 2.4-2.7 4.93-2.7 5.27 0 6.25 3.47 6.25 7.97V24h-5v-7.9c0-1.88-.03-4.3-2.62-4.3-2.62 0-3.02 2.05-3.02 4.16V24H8z"/>
+        </svg>
+      </button>
+
+      <!-- EMAIL -->
+      <button class="icon-btn" onclick="window.location.href='mailto:leijahector@gmail.com'">
+        <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 7.00005L10.2 11.65C11.2667 12.45 12.7333 12.45 13.8 11.65L20 7" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="3" y="5" width="18" height="14" rx="2" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+      </button>
+
+    </div>
+    <br>
         <h4>💬 Instagram</h4>
+        <p>Sígueme o contáctame en mis redes:</p>
         <div class="instagram-profile ig-premium" onclick="openInstagram()">
             <div class="ig-ring">
                 <img src="https://i.imgur.com/obsuT25.jpeg" alt="Instagram Avatar">
@@ -194,12 +225,12 @@ function openModal(type) {
             📋 Copiar Discord
         </button>
       `;
-        setTimeout(loadDiscordProfile, 100);
-        setTimeout(startDiscordLive, 100);
-    }
+    setTimeout(loadDiscordProfile, 100);
+    setTimeout(startDiscordLive, 100);
+  }
 
-    if (type === "musica") {
-        content = `
+  if (type === "musica") {
+    content = `
         <h3>🎵 Mi música favorita</h3>
         <p>Disfruto de una variedad de géneros musicales, incluyendo rock, pop y música electrónica. Aquí tienes algunas de mis canciones favoritas:</p>
     
@@ -266,51 +297,51 @@ function openModal(type) {
             loading="lazy">
         </iframe>
      `;
-    }
+  }
 
-    if (type === "C#") {
-        content = `
+  if (type === "C#") {
+    content = `
         <div class="skill-card">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-plain.svg" alt="C#">
             <h3>C#</h3>
             <p>Lenguaje de programación orientado a objetos. Se usa para crear aplicaciones de escritorio, web y videojuegos con la plataforma .NET.</p>
         </div>
       `;
-    }
+  }
 
-    if (type === "html") {
-        content = `
+  if (type === "html") {
+    content = `
         <div class="skill-card">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg" alt="HTML" width="50">
             <h3>HTML</h3>
             <p>Es el lenguaje que estructura una página web.Define títulos, textos, imágenes y secciones.</p>
         </div>
       `;
-    }
+  }
 
-    if (type === "css") {
-        content = `
+  if (type === "css") {
+    content = `
         <div class="skill-card">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" alt="CSS" width="50">
             <h3>CSS</h3>
             <p>Se encarga del diseño: colores, tamaños, animaciones y estilos visuales.</p>
         </div>
       `;
-    }
+  }
 
-    if (type === "js") {
-        content = `
+  if (type === "js") {
+    content = `
         <div class="skill-card">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" alt="JavaScript" width="50">
             <h3>JavaScript</h3>
             <p>Hace la página interactiva: botones, animaciones, ventanas y lógica.</p>
         </div>
       `;
-    }
+  }
 
-    modalContent.innerHTML = content + `<button class="close" onclick="closeModal()">Cerrar</button>`;
-    modal.style.display = "flex";
-    animateModal();
+  modalContent.innerHTML = content + `<button class="close" onclick="closeModal()">Cerrar</button>`;
+  modal.style.display = "flex";
+  animateModal();
 }
 
 function openProject(project) {
@@ -352,19 +383,19 @@ function openProject(project) {
 }
 
 function showGame(game) {
-    let gameContent = "";
-    if (game === "minecraft") {
-        gameContent = `
+  let gameContent = "";
+  if (game === "minecraft") {
+    gameContent = `
         <h3>Minecraft</h3>
         <p>Juego de construcción, exploración y supervivencia en mundos infinitos.</p>
         <a class="download-btn" href="https://www.minecraft.net/download" target="_blank">
             Descargar Minecraft
         </a>
       `;
-    }
+  }
 
-    if (game === "satisfactory") {
-        gameContent = `
+  if (game === "satisfactory") {
+    gameContent = `
         <h3>Satisfactory</h3>
         <p>
             Juego de construcción y automatización en mundo abierto,
@@ -376,117 +407,150 @@ function showGame(game) {
             Descargar Satisfactory
         </a>
       `;
-    }
-    
-    if (game === "osu") {
-        gameContent = `
+  }
+
+  if (game === "osu") {
+    gameContent = `
         <h3>OSU!</h3>
         <p>Juego de ritmo basado en clics al compás de la música.</p>
         <a class="download-btn" href="https://osu.ppy.sh/home/download" target="_blank">
             Descargar OSU!
         </a>
       `;
-    }
+  }
 
-    if (game === "lol") {
-        gameContent = `
+  if (game === "lol") {
+    gameContent = `
         <h3>League of Legends</h3>
         <p>MOBA competitivo 5v5 con campeones y estrategia.</p>
         <a class="download-btn" href="https://www.leagueoflegends.com/download" target="_blank">
             Descargar League of Legends
         </a>
        `;
-    }
+  }
 
-    if (game === "gta") {
-        gameContent = `
+  if (game === "gta") {
+    gameContent = `
         <h3>GTA V</h3>
         <p>Juego de mundo abierto con acción, historia y libertad total.</p>
         <a class="download-btn" href="https://www.rockstargames.com/gta-v" target="_blank">
             Descargar GTA V
         </a>
       `;
-    }
+  }
 
-    if (game === "marvel") {
-        gameContent = `
+  if (game === "marvel") {
+    gameContent = `
         <h3>Marvel Rivals</h3>
         <p>Shooter por equipos con héroes y villanos de Marvel.</p>
         <a class="download-btn" href="https://store.steampowered.com/app/2767030/Marvel_Rivals/" target="_blank">
             Descargar Marvel Rivals
         </a>
       `;
-    }
+  }
 
-    modalContent.innerHTML = `
+  modalContent.innerHTML = `
     ${gameContent}
     <br>
     <button class="close" onclick="openModal('juegos')">Volver</button>
   `;
 }
+function openPortfolio() {
+  window.open('cv/Resume.pdf', '_blank');
+}
 
 const clickSound = new Audio(
-    "https://www.soundsnap.com/clean_interface_buttons_32_wav"
+  "https://www.soundsnap.com/clean_interface_buttons_32_wav"
 );
+
 function toggleTheme() {
   const body = document.body;
 
-  // Quita animación anterior si existe
-  body.classList.remove("theme-transition");
 
-  // Forzar reflow para reiniciar animación
+  body.classList.remove("theme-transition");
   void body.offsetWidth;
 
-  // Cambia tema
   body.classList.toggle("light-theme");
-
-  // Aplica animación
   body.classList.add("theme-transition");
+
+  btn.style.transition = "transform 0.4s ease, opacity 0.4s ease";
+  btn.style.transform = "rotateY(90deg) scale(0)";
+  btn.style.opacity = "0";
+
+  setTimeout(() => {
+    if (body.classList.contains("light-theme")) {
+      btn.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+          <circle cx="12" cy="12" r="5"/>
+          <g stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </g>
+        </svg>
+      `;
+    } else {
+      btn.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+          <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/>
+        </svg>
+      `;
+    }
+
+    btn.style.transform = "rotateY(0deg) scale(1)";
+    btn.style.opacity = "1";
+  }, 200);
 }
+
 function copyDiscord() {
-    const discordUser = "_leija"; // nombre visible
-    navigator.clipboard.writeText(discordUser);
-    alert("Discord copiado al portapapeles 📋");
+  const discordUser = "_leija";
+  navigator.clipboard.writeText(discordUser);
+  alert("Discord copiado al portapapeles 📋");
 }
 
 async function loadDiscordProfile() {
-    const userId = "883130361863868466";
+  const userId = "883130361863868466";
 
-    try {
-        const res = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
-        const json = await res.json();
-        if (!json.success) throw new Error("Error");
+  try {
+    const res = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
+    const json = await res.json();
+    if (!json.success) throw new Error("Error");
 
-        const data = json.data;
-        const user = data.discord_user;
-        const status = data.discord_status;
+    const data = json.data;
+    const user = data.discord_user;
+    const status = data.discord_status;
 
-        const statusText = {
-            online: " En línea",
-            idle: " Ausente",
-            dnd: " No molestar",
-            offline: " Desconectado"
-        };
+    const statusText = {
+      online: " En línea",
+      idle: " Ausente",
+      dnd: " No molestar",
+      offline: " Desconectado"
+    };
 
-        const avatar = user.avatar
-            ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=256`
-            : "https://cdn.discordapp.com/embed/avatars/0.png";
+    const avatar = user.avatar
+      ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=256`
+      : "https://cdn.discordapp.com/embed/avatars/0.png";
 
-        /* 🎮 ACTIVIDAD */
-        let activityHTML = `<p class="discord-activity">💤 Sin actividad</p>`;
+    /* 🎮 ACTIVIDAD */
+    let activityHTML = `<p class="discord-activity">💤 Sin actividad</p>`;
 
-        const activity = data.activities.find(a => a.type === 0);
-        if (activity) {
-            const since = activity.timestamps?.start
-                ? `<span class="since">⏱ ${timeSince(activity.timestamps.start)}</span>`
-                : "";
+    const activity = data.activities.find(a => a.type === 0);
+    if (activity) {
+      const since = activity.timestamps?.start
+        ? `<span class="since">⏱ ${timeSince(activity.timestamps.start)}</span>`
+        : "";
 
-            const img = activity.assets?.large_image
-                ? `<img class="activity-img"
+      const img = activity.assets?.large_image
+        ? `<img class="activity-img"
             src="https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.png">`
-                : "";
+        : "";
 
-            activityHTML = `
+      activityHTML = `
             <div class="activity-box">
                 ${img}
                 <div>
@@ -496,27 +560,27 @@ async function loadDiscordProfile() {
                 </div>
             </div>
           `;
-        }
+    }
 
-        /* 🎵 SPOTIFY */
-        let spotifyHTML = "";
+    /* SPOTIFY */
+    let spotifyHTML = "";
 
-        if (data.spotify) {
-            const start = data.spotify.timestamps.start;
-            const end = data.spotify.timestamps.end;
-            const now = Date.now();
+    if (data.spotify) {
+      const start = data.spotify.timestamps.start;
+      const end = data.spotify.timestamps.end;
+      const now = Date.now();
 
-            const duration = end - start;
-            const current = Math.min(now - start, duration);
-            const progress = (current / duration) * 100;
+      const duration = end - start;
+      const current = Math.min(now - start, duration);
+      const progress = (current / duration) * 100;
 
-            const currentTime = formatTime(current);
-            const totalTime = formatTime(duration);
+      const currentTime = formatTime(current);
+      const totalTime = formatTime(duration);
 
-            // 🎶 Ritmo estimado (más corta = más rápido)
-            const beatSpeed = Math.max(1.2, Math.min(3, duration / 60000));
+      // 🎶 Ritmo estimado (más corta = más rápido)
+      const beatSpeed = Math.max(1.2, Math.min(3, duration / 60000));
 
-            spotifyHTML = `
+      spotifyHTML = `
             <a class="spotify-box beat"
                 href="https://open.spotify.com/track/${data.spotify.track_id}"
                 target="_blank"
@@ -540,9 +604,9 @@ async function loadDiscordProfile() {
                 </div>
             </a>
           `;
-        }
+    }
 
-        document.getElementById("discordProfile").innerHTML = `
+    document.getElementById("discordProfile").innerHTML = `
             <div class="discord-card discord-premium ${status}">
                 <div class="discord-profile ultra">
                     <img class="avatar" src="${avatar}">
@@ -558,63 +622,63 @@ async function loadDiscordProfile() {
                 ${spotifyHTML}
             </div>
         `;
-    } catch (e) {
-        document.getElementById("discordProfile").innerHTML =
-            "<p>⚠️ No se pudo cargar Discord</p>";
-    }
+  } catch (e) {
+    document.getElementById("discordProfile").innerHTML =
+      "<p>⚠️ No se pudo cargar Discord</p>";
+  }
 }
 
 function timeSince(timestamp) {
-    const seconds = Math.floor((Date.now() - timestamp) / 1000);
-    const min = Math.floor(seconds / 60);
-    const hrs = Math.floor(min / 60);
+  const seconds = Math.floor((Date.now() - timestamp) / 1000);
+  const min = Math.floor(seconds / 60);
+  const hrs = Math.floor(min / 60);
 
-    if (hrs > 0) return `${hrs}h ${min % 60}m`;
-    return `${min}m`;
+  if (hrs > 0) return `${hrs}h ${min % 60}m`;
+  return `${min}m`;
 }
 let discordInterval = null;
 
 function startDiscordLive() {
+  loadDiscordProfile();
+
+  if (discordInterval) clearInterval(discordInterval);
+
+  discordInterval = setInterval(() => {
     loadDiscordProfile();
-
-    if (discordInterval) clearInterval(discordInterval);
-
-    discordInterval = setInterval(() => {
-        loadDiscordProfile();
-    }, 5000); // cada 5 segundos
+  }, 5000); // cada 5 segundos
 }
 function formatTime(ms) {
-    const totalSeconds = Math.floor(ms / 1000);
-    const minutes = Math.floor(totalSeconds / 60);
-    const seconds = totalSeconds % 60;
-    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+  const totalSeconds = Math.floor(ms / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
 }
 const igSound = new Audio(
-    "https://assets.mixkit.co/sfx/preview/mixkit-modern-click-box-check-1120.mp3"
+  "https://assets.mixkit.co/sfx/preview/mixkit-modern-click-box-check-1120.mp3"
 );
 
 function openInstagram() {
-    igSound.currentTime = 0;
-    igSound.play();
+  igSound.currentTime = 0;
+  igSound.play();
 
-    const card = document.querySelector(".ig-premium");
-    card.classList.add("ig-click");
+  const card = document.querySelector(".ig-premium");
+  card.classList.add("ig-click");
 
-    setTimeout(() => {
-        window.open("https://www.instagram.com/leija.chi/", "_blank");
-        card.classList.remove("ig-click");
-    }, 180);
+  setTimeout(() => {
+    window.open("https://www.instagram.com/leija.chi/", "_blank");
+    card.classList.remove("ig-click");
+  }, 180);
 }
 
 // Animaciones para modal
 function animateModal() {
-    modalContent.style.opacity = 0;
-    modalContent.style.transform = "scale(0.9)";
-    setTimeout(() => {
-        modalContent.style.transition = "all 0.3s ease";
-        modalContent.style.opacity = 1;
-        modalContent.style.transform = "scale(1)";
-    }, 10);
+  modalContent.style.opacity = 0;
+  modalContent.style.transform = "scale(0.9)";
+  setTimeout(() => {
+    modalContent.style.transition = "all 0.3s ease";
+    modalContent.style.opacity = 1;
+    modalContent.style.transform = "scale(1)";
+  }, 10);
 }
 document.addEventListener("DOMContentLoaded", () => {
   const firma = document.querySelector(".firma-neon");
